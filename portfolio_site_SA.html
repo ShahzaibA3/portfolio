@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shahzaib Ahmad — Portfolio</title>
+  <style>
+  html { scroll-behavior: smooth; } /* Smooth scrolling */
+  body { font-family: 'Inter', sans-serif; } /* Improved default font */
+    :root {
+      --bg: #0d0f17;
+      --fg: #e0e6ff;
+      --accent: #5af3ff; /* neon cyan */
+      --secondary: #c77dff; /* neon purple */
+      --card-bg: #11131d;
+      --glow: 0 0 12px rgba(90,243,255,0.6);
+    }
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --fg: #0d0f17;
+      --accent: #06b6d4;
+      --secondary: #7c3aed;
+      --card-bg: #f8fafc;
+      --glow: none;
+    }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeIn 0.8s ease;
+    }
+    h1 { font-size: 2.75rem; margin-bottom: 0.5rem; }
+    h2 {
+      margin-top: 3rem;
+      font-size: 1.75rem;
+      position: relative;
+      letter-spacing: 0.5px;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      width: 70px;
+      height: 2px;
+      background: var(--secondary);
+      margin-top: 0.5rem;
+      box-shadow: var(--glow);
+    }
+    p { opacity: 0.85; max-width: 750px; margin-inline: auto; }
+    section { padding: 0 2rem; max-width: 900px; margin: auto; animation: fadeUp 0.8s ease; }
+    .projects {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.25rem;
+      border-radius: 12px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 20px rgba(90,243,255,0.15);
+      border-color: var(--accent);
+    }
+    .socials a {
+      margin: 0 0.4rem;
+      color: var(--accent);
+      opacity: 0.8;
+      font-size: 1.3rem;
+      transition: opacity 0.2s, text-shadow 0.2s;
+      text-decoration: none;
+    }
+    .socials a:hover {
+      opacity: 1;
+      text-shadow: 0 0 6px var(--accent);
+    }
+    .theme-toggle {
+      cursor: pointer;
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--card-bg);
+      color: var(--fg);
+      font-size: 0.85rem;
+      letter-spacing: 0.4px;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity:1; transform: translateY(0);} }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      opacity: 0.5;
+      font-size: 0.85rem;
+    }
+  .neon-grid::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image:
+        linear-gradient(var(--accent) 1px, transparent 1px),
+        linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: -1;
+      filter: drop-shadow(0 0 6px var(--accent));
+    }
+  .theme-icon { position: fixed; top: 1rem; right: 1rem; cursor: pointer; font-size: 1.3rem; padding: 0.4rem; border-radius: 50%; background: var(--card-bg); border: 1px solid rgba(255,255,255,0.15); z-index: 999; }
+.reveal { opacity:0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity:1; transform: translateY(0); }
+</style>
+  <!-- Improved Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Shahzaib Ahmad</h1>
+    <p>Mechatronics Engineering Student • Hobbyist Developer • QMIND Member • Stats Nerd • Leafs Fan</p>
+  <div class="socials">
+      <a href="https://github.com/yourgithub" target="_blank">🐙</a>
+      <a href="https://linkedin.com/in/yourlinkedin" target="_blank">🔗</a>
+    </div>
+    <div id="themeToggle" class="theme-icon" title="Toggle theme">🌙</div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Shahzaib Ahmad, a mechatronics engineering student interested in software,
+      data structures, and intelligent systems. I enjoy building projects that combine
+      hardware and software, and I'm currently exploring embedded AI.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>TinyNav — Autonomous RC Car</h3>
+        <p>Developed an embedded AI model on an ESP32 for autonomous navigation.</p>
+      </div>
+      <div class="card">
+        <h3>Traffic Data Management System</h3>
+        <p>Built a data-structures-based traffic optimization simulator using graphs, FSMs, and queues.</p>
+      </div>
+      <div class="card">
+        <h3>Bentonite Servo Dispenser</h3>
+        <p>Designed a rotary disk dispensing system controlled by a micro servo to output ~0.8g.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech">
+    <h2>Tech Stack</h2>
+    <p class="reveal">Python • C • C++ • JavaScript • HTML/CSS • ESP32 • Linux • Git</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>If you want to reach out, fill the form below:</p>
+    <form action="https://formsubmit.co/your_email_here" method="POST" style="display:flex;flex-direction:column;gap:0.75rem;max-width:400px;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
+      <input type="text" name="name" placeholder="Your Name" required style="padding:0.6rem;border-radius:8px;border:1px solid #ccc;">
+      <input type="email" name="email" placeholder="Email Address" required style="padding:0.6rem;border-radius:8px;border:1px solid #ccc;">
+      <textarea name="message" placeholder="Message" rows="5" required style="padding:0.6rem;border-radius:8px;border:1px solid #ccc;"></textarea>
+      <button type="submit" style="padding:0.6rem 1rem;border-radius:8px;border:none;background:var(--accent);color:white;font-weight:600;cursor:pointer;">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2026 Shahzaib Ahmad
+  </footer>
+<script>
+    const toggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+if(!localStorage.getItem('theme')){
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+} else {
+  root.setAttribute('data-theme', localStorage.getItem('theme'));
+}
+toggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', current);
+  localStorage.setItem('theme', current);
+  toggle.textContent = current === 'dark' ? '🌙' : '☀️';
+});
+const reveals = document.querySelectorAll('.reveal, section, .card');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.15});
+reveals.forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
