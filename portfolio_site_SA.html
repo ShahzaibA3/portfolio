@@ -182,29 +182,84 @@
     .stat-lbl { font-size: 0.7rem; color: var(--fg-dim); letter-spacing: 0.08em; text-transform: uppercase; }
     @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
 
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .skill-category {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s;
+    /* ── SKILLS — TAG CLOUD STYLE ── */
+    .skills-categories { display: flex; flex-direction: column; gap: 2rem; }
+
+    .skill-group { }
+    .skill-group-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
-    .skill-category:hover { border-color: var(--accent2); }
-    .skill-cat-title {
-      font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
-      color: var(--accent2); margin-bottom: 1.2rem; letter-spacing: 0.05em; text-transform: uppercase;
+    .skill-group-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
-    .skill-bar-row { margin-bottom: 0.8rem; }
-    .skill-bar-label {
-      display: flex; justify-content: flex-start;
-      font-size: 0.75rem; color: var(--fg-dim); margin-bottom: 0.3rem;
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
     }
-    .skill-bar-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-    .skill-bar-fill {
-      height: 100%; border-radius: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
+
+    .skill-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--fg-dim);
+      letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
     }
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,255,224,0.1);
+    }
+    .skill-pill.hi {
+      border-color: rgba(0,255,224,0.25);
+      color: var(--fg);
+    }
+    .skill-pill.hi:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* EXPERIENCE TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+    .tl-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
+    .tl-dot {
+      position: absolute; left: -2.4rem; top: 0.3rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 10px var(--glow-c);
+    }
+    .tl-date { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .tl-role { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .tl-org { font-size: 0.78rem; color: var(--accent2); margin-bottom: 0.5rem; }
+    .tl-desc { font-size: 0.8rem; color: var(--fg-dim); }
+    .tl-bullets { margin-top: 0.5rem; padding-left: 0; list-style: none; }
+    .tl-bullets li {
+      font-size: 0.78rem; color: var(--fg-dim); margin-bottom: 0.35rem;
+      position: relative; padding-left: 1rem;
+    }
+    .tl-bullets li::before { content: "›"; position: absolute; left: 0; color: var(--accent); }
 
     /* PROJECTS */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
@@ -230,29 +285,6 @@
       background: rgba(0,255,224,0.07); border: 1px solid var(--border);
       color: var(--accent); letter-spacing: 0.05em;
     }
-
-    /* EXPERIENCE TIMELINE */
-    .timeline { position: relative; padding-left: 2rem; }
-    .timeline::before {
-      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
-    }
-    .tl-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; }
-    .tl-dot {
-      position: absolute; left: -2.4rem; top: 0.3rem;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 10px var(--glow-c);
-    }
-    .tl-date { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
-    .tl-role { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .tl-org { font-size: 0.78rem; color: var(--accent2); margin-bottom: 0.5rem; }
-    .tl-desc { font-size: 0.8rem; color: var(--fg-dim); }
-    .tl-bullets { margin-top: 0.5rem; padding-left: 0; list-style: none; }
-    .tl-bullets li {
-      font-size: 0.78rem; color: var(--fg-dim); margin-bottom: 0.35rem;
-      position: relative; padding-left: 1rem;
-    }
-    .tl-bullets li::before { content: "›"; position: absolute; left: 0; color: var(--accent); }
 
     /* CONTACT */
     .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
@@ -327,8 +359,8 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
@@ -401,66 +433,107 @@
   <section id="skills">
     <div class="section-label">02 // Skills</div>
     <h2 class="section-title reveal">Tech Stack</h2>
-    <div class="skills-grid reveal-stagger">
+    <div class="skills-categories reveal">
 
-      <div class="skill-category">
-        <div class="skill-cat-title">Languages</div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Python</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.90"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>C / C++</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.82"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Java</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.70"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Verilog</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.65"></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-pill hi">Python</span>
+          <span class="skill-pill hi">C</span>
+          <span class="skill-pill hi">C++</span>
+          <span class="skill-pill">Java</span>
+          <span class="skill-pill">Verilog</span>
         </div>
       </div>
 
-      <div class="skill-category">
-        <div class="skill-cat-title">Hardware &amp; Embedded</div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>ESP32 / Arduino</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.88"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>ROS / Linux</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.78"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>CAD</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.75"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Embedded AI (TFLite)</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.72"></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">Hardware &amp; Embedded</div>
+        <div class="skill-tags">
+          <span class="skill-pill hi">ESP32</span>
+          <span class="skill-pill hi">Arduino</span>
+          <span class="skill-pill hi">ItsyBitsy M0</span>
+          <span class="skill-pill hi">Raspberry Pi</span>
+          <span class="skill-pill">CAD</span>
+          <span class="skill-pill">CAN Bus</span>
+          <span class="skill-pill">LiDAR</span>
+          <span class="skill-pill">IMU</span>
         </div>
       </div>
 
-      <div class="skill-category">
-        <div class="skill-cat-title">Frameworks &amp; Tools</div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>TensorFlow / PyTorch</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.80"></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">AI &amp; Data</div>
+        <div class="skill-tags">
+          <span class="skill-pill hi">TensorFlow</span>
+          <span class="skill-pill hi">PyTorch</span>
+          <span class="skill-pill hi">TFLite (Embedded AI)</span>
+          <span class="skill-pill hi">Pandas</span>
+          <span class="skill-pill">Data Analysis</span>
+          <span class="skill-pill">Neural Networks</span>
         </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Pandas / Data Analysis</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.82"></div></div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Tools &amp; Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-pill hi">Linux</span>
+          <span class="skill-pill hi">ROS</span>
+          <span class="skill-pill hi">Git / GitHub</span>
+          <span class="skill-pill hi">Gazebo</span>
+          <span class="skill-pill">RViz</span>
+          <span class="skill-pill">SSH</span>
+          <span class="skill-pill">MS Office / Excel</span>
         </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>Git / GitHub</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.88"></div></div>
-        </div>
-        <div class="skill-bar-row">
-          <div class="skill-bar-label"><span>MS Office / Excel</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="0.85"></div></div>
-        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">03 // Experience</div>
+    <h2 class="section-title reveal">Where I've been</h2>
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">July 2026 — Present</div>
+        <div class="tl-role">Electrical Team Lead</div>
+        <div class="tl-org">Queen's Relectric — Electric Vehicle Design Team · Kingston, ON</div>
+        <ul class="tl-bullets">
+          <li>Leading a team of 10+ students, facilitating meetings to define goals, manage timelines, and coordinate deliverables across technical workstreams.</li>
+          <li>Redesigning the vehicle's electrical architecture — smart CAN-enabled PDU, regenerative braking controls, and a custom battery system.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 10px var(--glow2-c);"></div>
+        <div class="tl-date">May 2026 — August 2026</div>
+        <div class="tl-role">Engineering Intern</div>
+        <div class="tl-org">Soil Engineers Ltd. · Richmond Hill, ON</div>
+        <ul class="tl-bullets">
+          <li>Collected, analyzed, and interpreted engineering data to support field investigations and technical decision-making.</li>
+          <li>Developed Excel tools and automated templates to organize, analyze, and visualize datasets for project reporting.</li>
+          <li>Performed QA checks on technical documentation, identifying inconsistencies before submission.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">September 2025 — Present</div>
+        <div class="tl-role">Machine Learning Engineer</div>
+        <div class="tl-org">QMIND — Queen's Machine Intelligence &amp; Neuroevolution Design · Kingston, ON</div>
+        <ul class="tl-bullets">
+          <li>Collaborated with a cross-functional team of 6 to design and prototype TinyNav, an autonomous navigation robot with ML inference under severe hardware constraints.</li>
+          <li>Delivered presentations to audiences of 50+ stakeholders, pitching project feasibility to secure support.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 10px var(--glow2-c);"></div>
+        <div class="tl-date">2024 — Present</div>
+        <div class="tl-role">Mechatronics Engineering Student</div>
+        <div class="tl-org">Queen's University · Kingston, ON</div>
+        <p class="tl-desc">BASc. Applied Science, Mechatronics Engineering (2024–2028). Relevant coursework: Computer Architecture, Electronics, Circuits, Data Structures &amp; Algorithms, Linear Algebra.</p>
       </div>
 
     </div>
@@ -468,7 +541,7 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="section-label">03 // Projects</div>
+    <div class="section-label">04 // Projects</div>
     <h2 class="section-title reveal">Things I've built</h2>
     <div class="projects-grid reveal-stagger">
 
@@ -488,19 +561,6 @@
 
       <div class="project-card">
         <div class="project-num">02</div>
-        <div class="project-title">TinyNav — Autonomous RC Car</div>
-        <p class="project-desc">Developed an ML model optimized for an ESP32 microcontroller to control a miniature robot following a track adaptively. Combined CAD, neural networks, and hardware integration into a full mechatronic system.</p>
-        <div class="project-chips">
-          <span class="chip">C++</span>
-          <span class="chip">ESP32</span>
-          <span class="chip">TFLite</span>
-          <span class="chip">Embedded AI</span>
-          <span class="chip">CAD</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="project-num">03</div>
         <div class="project-title">Electric Go-Kart</div>
         <p class="project-desc">Contributing to the design and development of an electric go-kart as part of Queen's Relectric. Leading the electrical architecture including a smart CAN-enabled PDU, regenerative braking controls, and a custom battery system.</p>
         <div class="project-chips">
@@ -509,6 +569,19 @@
           <span class="chip">Regen Braking</span>
           <span class="chip">Battery Systems</span>
           <span class="chip">EV</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">03</div>
+        <div class="project-title">TinyNav — Autonomous RC Car</div>
+        <p class="project-desc">Developed an ML model optimized for an ESP32 microcontroller to control a miniature robot following a track adaptively. Combined CAD, neural networks, and hardware integration into a full mechatronic system.</p>
+        <div class="project-chips">
+          <span class="chip">C++</span>
+          <span class="chip">ESP32</span>
+          <span class="chip">TFLite</span>
+          <span class="chip">Embedded AI</span>
+          <span class="chip">CAD</span>
         </div>
       </div>
 
@@ -558,57 +631,6 @@
           <span class="chip">JavaScript</span>
           <span class="chip">FormSubmit</span>
         </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="section-label">04 // Experience</div>
-    <h2 class="section-title reveal">Where I've been</h2>
-    <div class="timeline reveal">
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">July 2026 — Present</div>
-        <div class="tl-role">Electrical Team Lead</div>
-        <div class="tl-org">Queen's Relectric — Electric Vehicle Design Team · Kingston, ON</div>
-        <ul class="tl-bullets">
-          <li>Leading a team of 10+ students, facilitating meetings to define goals, manage timelines, and coordinate deliverables across technical workstreams.</li>
-          <li>Redesigning the vehicle's electrical architecture — smart CAN-enabled PDU, regenerative braking controls, and a custom battery system.</li>
-        </ul>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 10px var(--glow2-c);"></div>
-        <div class="tl-date">May 2026 — August 2026</div>
-        <div class="tl-role">Engineering Intern</div>
-        <div class="tl-org">Soil Engineers Ltd. · Richmond Hill, ON</div>
-        <ul class="tl-bullets">
-          <li>Collected, analyzed, and interpreted engineering data to support field investigations and technical decision-making.</li>
-          <li>Developed Excel tools and automated templates to organize, analyze, and visualize datasets for project reporting.</li>
-          <li>Performed QA checks on technical documentation, identifying inconsistencies before submission.</li>
-        </ul>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">September 2025 — Present</div>
-        <div class="tl-role">Machine Learning Engineer</div>
-        <div class="tl-org">QMIND — Queen's Machine Intelligence &amp; Neuroevolution Design · Kingston, ON</div>
-        <ul class="tl-bullets">
-          <li>Collaborated with a cross-functional team of 6 to design and prototype TinyNav, an autonomous navigation robot with ML inference under severe hardware constraints.</li>
-          <li>Delivered presentations to audiences of 50+ stakeholders, pitching project feasibility to secure support.</li>
-        </ul>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--accent2);box-shadow:0 0 10px var(--glow2-c);"></div>
-        <div class="tl-date">2024 — Present</div>
-        <div class="tl-role">Mechatronics Engineering Student</div>
-        <div class="tl-org">Queen's University · Kingston, ON</div>
-        <p class="tl-desc">BASc. Applied Science, Mechatronics Engineering (2024–2028). Relevant coursework: Computer Architecture, Electronics, Circuits, Data Structures &amp; Algorithms, Linear Algebra.</p>
       </div>
 
     </div>
@@ -668,14 +690,11 @@
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
-          e.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-            bar.style.transform = `scaleX(${bar.dataset.w})`;
-          });
         }
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll('.reveal, .reveal-stagger, .skill-category').forEach(el => obs.observe(el));
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => obs.observe(el));
   </script>
 </body>
 </html>
