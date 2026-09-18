@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shahzaib Ahmad — Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF7F1;
+  --bg-alt:#F1ECE2;
+  --card:#FFFFFF;
+  --ink:#211F26;
+  --ink-dim:#6B6560;
+  --ink-faint:#8C867F;
+  --border:rgba(33,31,38,0.10);
+  --border-strong:rgba(33,31,38,0.18);
+  --violet:#5B4CE0;
+  --violet-deep:#3D2FB0;
+  --violet-tint:#EEEBFC;
+  --coral:#E8592F;
+  --coral-tint:#FBEAE2;
+  --teal:#0F8F78;
+  --teal-tint:#E4F5F0;
+  --gold:#C7891B;
+  --gold-tint:#FBF0DD;
+  --shadow-sm:0 1px 2px rgba(33,31,38,0.06);
+  --shadow-md:0 8px 24px rgba(33,31,38,0.08);
+  --shadow-lg:0 24px 60px rgba(33,31,38,0.14);
+  --radius:20px;
+  --radius-sm:10px;
+  --font-display:'Space Grotesk', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'IBM Plex Mono', monospace;
+}
+[data-theme="dark"]{
+  --bg:#17151C;
+  --bg-alt:#1E1B25;
+  --card:#232028;
+  --ink:#F3F0FA;
+  --ink-dim:#B4AEC2;
+  --ink-faint:#8B849C;
+  --border:rgba(243,240,250,0.10);
+  --border-strong:rgba(243,240,250,0.18);
+  --violet:#8B7CFF;
+  --violet-deep:#B3A9FF;
+  --violet-tint:rgba(139,124,255,0.14);
+  --coral:#FF8A62;
+  --coral-tint:rgba(255,138,98,0.14);
+  --teal:#3FCBAE;
+  --teal-tint:rgba(63,203,174,0.14);
+  --gold:#E3AA4E;
+  --gold-tint:rgba(227,170,78,0.14);
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md:0 8px 24px rgba(0,0,0,0.35);
+  --shadow-lg:0 24px 60px rgba(0,0,0,0.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  transition:background .35s, color .35s;
+}
+img,svg{display:block;max-width:100%;}
+a{color:inherit;}
+h1,h2,h3,h4{font-family:var(--font-display);letter-spacing:-0.01em;}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 2rem;}
+.field-note{font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-faint);letter-spacing:0.03em;}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 2rem;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.nav-mark{display:flex;align-items:center;gap:0.55rem;font-family:var(--font-display);font-weight:700;font-size:1.05rem;}
+.nav-mark-dot{width:10px;height:10px;border-radius:3px;background:var(--violet);transform:rotate(45deg);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.88rem;color:var(--ink-dim);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:0.9rem;}
+.theme-btn{cursor:pointer;background:var(--card);border:1px solid var(--border);color:var(--ink);border-radius:100px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:0.95rem;transition:border-color .2s;}
+.theme-btn:hover{border-color:var(--violet);}
+@media (max-width:760px){.nav-links{display:none;}}
+
+.pill-btn{
+  font-family:var(--font-body);font-weight:600;font-size:0.9rem;
+  padding:0.75rem 1.4rem;border-radius:100px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;
+  border:1px solid transparent;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.pill-btn.solid{background:var(--violet);color:#fff;}
+.pill-btn.solid:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(91,76,224,0.28);}
+.pill-btn.ghost{background:transparent;color:var(--ink);border-color:var(--border-strong);}
+.pill-btn.ghost:hover{border-color:var(--ink);transform:translateY(-2px);}
+
+#hero{
+  padding:8.5rem 2rem 5rem;
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:center;
+  max-width:1180px;margin:0 auto;
+}
+.hero-kicker{font-size:0.92rem;color:var(--violet);font-weight:600;margin-bottom:1rem;}
+.hero-name{font-size:clamp(2.6rem,5.5vw,4.4rem);font-weight:700;line-height:1.02;margin-bottom:1.1rem;}
+.hero-degree{font-size:1.05rem;color:var(--ink-dim);max-width:480px;margin-bottom:1.6rem;}
+.hero-degree strong{color:var(--ink);font-weight:600;}
+.hero-fields{display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:2.1rem;}
+.field-chip{font-size:0.82rem;padding:0.4rem 0.9rem;border-radius:100px;background:var(--card);border:1px solid var(--border);color:var(--ink-dim);}
+.field-chip.v{background:var(--violet-tint);color:var(--violet-deep);border-color:transparent;}
+.field-chip.c{background:var(--coral-tint);color:var(--coral);border-color:transparent;}
+.field-chip.t{background:var(--teal-tint);color:var(--teal);border-color:transparent;}
+.hero-cta{display:flex;gap:0.9rem;flex-wrap:wrap;}
+
+.hero-art{position:relative;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
+.hero-art svg{width:100%;height:100%;}
+
+section{padding:5.5rem 2rem;}
+.section-inner{max-width:1080px;margin:0 auto;}
+.section-tag{font-size:0.86rem;font-weight:600;color:var(--violet);margin-bottom:0.7rem;}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:2.6rem;flex-wrap:wrap;}
+.section-title{font-size:clamp(1.7rem,3.2vw,2.35rem);font-weight:700;max-width:640px;}
+.section-desc{color:var(--ink-dim);max-width:400px;font-size:0.95rem;}
+.alt{background:var(--bg-alt);}
+
+.about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:start;}
+.about-text p{color:var(--ink-dim);font-size:0.98rem;margin-bottom:1.1rem;max-width:520px;}
+.about-text a{color:var(--violet);font-weight:600;text-decoration:none;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.4rem;box-shadow:var(--shadow-sm);}
+.stat-num{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--violet);display:block;}
+.stat-lbl{font-size:0.8rem;color:var(--ink-dim);margin-top:0.2rem;}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+.stack-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.6rem 1.7rem;box-shadow:var(--shadow-sm);}
+.stack-card-head{display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;}
+.stack-dot{width:9px;height:9px;border-radius:50%;}
+.stack-card-title{font-family:var(--font-display);font-weight:700;font-size:1rem;}
+.stack-pills{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.stack-pill{font-family:var(--font-mono);font-size:0.74rem;padding:0.35rem 0.75rem;border-radius:8px;background:var(--bg-alt);color:var(--ink-dim);border:1px solid var(--border);}
+[data-theme="dark"] .stack-pill{background:var(--bg);}
+@media(max-width:760px){.stack-grid{grid-template-columns:1fr;}}
+
+.timeline{position:relative;padding-left:2.2rem;}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--border-strong);}
+.tl-item{position:relative;padding-bottom:2.4rem;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-2.2rem;top:0.3rem;width:12px;height:12px;border-radius:50%;background:var(--violet);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--violet);}
+.tl-date{font-family:var(--font-mono);font-size:0.76rem;color:var(--violet);margin-bottom:0.3rem;}
+.tl-role{font-family:var(--font-display);font-weight:700;font-size:1.08rem;margin-bottom:0.15rem;}
+.tl-org{font-size:0.86rem;color:var(--coral);margin-bottom:0.6rem;font-weight:500;}
+.tl-bullets{list-style:none;}
+.tl-bullets li{font-size:0.88rem;color:var(--ink-dim);margin-bottom:0.4rem;padding-left:1.1rem;position:relative;}
+.tl-bullets li::before{content:"–";position:absolute;left:0;color:var(--ink-faint);}
+
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
+.pcard{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.7rem;display:flex;flex-direction:column;gap:1.1rem;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.pcard.clickable{cursor:pointer;}
+.pcard.clickable:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--border-strong);}
+.pcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+.pcard-title{font-family:var(--font-display);font-weight:700;font-size:1.15rem;}
+.pcard-org{font-size:0.78rem;color:var(--ink-faint);margin-top:0.2rem;}
+.pcard-open{font-size:0.76rem;font-weight:600;color:var(--violet);white-space:nowrap;display:flex;align-items:center;gap:0.3rem;}
+.pcard-desc{font-size:0.88rem;color:var(--ink-dim);}
+.pcard-diagram{background:var(--bg-alt);border-radius:var(--radius-sm);padding:0.9rem 1rem;}
+[data-theme="dark"] .pcard-diagram{background:var(--bg);}
+.flow-mini{display:flex;align-items:center;gap:0.4rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-dim);}
+.flow-mini .node{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:0.3rem 0.55rem;}
+.flow-mini .arrow{color:var(--ink-faint);}
+.pcard-chips{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.pchip{font-size:0.7rem;padding:0.25rem 0.6rem;border-radius:6px;background:var(--violet-tint);color:var(--violet-deep);}
+@media(max-width:760px){.projects-grid{grid-template-columns:1fr;}}
+
+.contact-card{
+  background:var(--ink);color:var(--bg);border-radius:28px;
+  padding:3.2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;
+}
+[data-theme="dark"] .contact-card{background:var(--violet-tint);color:var(--ink);}
+.contact-card h2{font-size:clamp(1.6rem,3vw,2.1rem);max-width:420px;}
+.contact-links{display:flex;flex-direction:column;gap:0.7rem;align-items:flex-start;}
+.contact-links a{font-size:0.95rem;text-decoration:none;color:inherit;opacity:0.9;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:0.15rem;transition:opacity .2s;}
+[data-theme="dark"] .contact-links a{border-bottom-color:var(--border-strong);}
+.contact-links a:hover{opacity:1;}
+
+footer{text-align:center;padding:2.5rem 2rem;font-size:0.78rem;color:var(--ink-faint);}
+footer span{color:var(--violet);font-weight:600;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+#overlay{
+  position:fixed;inset:0;z-index:500;background:var(--bg);
+  overflow-y:auto;display:none;
+}
+#overlay.open{display:block;}
+.case-topbar{
+  position:sticky;top:0;z-index:5;background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;
+}
+.close-btn{
+  display:flex;align-items:center;gap:0.5rem;background:var(--card);border:1px solid var(--border);
+  border-radius:100px;padding:0.55rem 1.1rem;font-size:0.85rem;font-weight:600;cursor:pointer;color:var(--ink);
+}
+.close-btn:hover{border-color:var(--ink);}
+.case-inner{max-width:840px;margin:0 auto;padding:3rem 2rem 6rem;}
+.case-eyebrow{font-family:var(--font-mono);font-size:0.78rem;color:var(--violet);margin-bottom:0.9rem;}
+.case-title{font-size:clamp(2rem,5vw,3rem);font-weight:700;margin-bottom:0.6rem;}
+.case-sub{color:var(--ink-dim);font-size:1.05rem;max-width:520px;margin-bottom:2.2rem;}
+.case-hero{
+  border-radius:var(--radius);overflow:hidden;margin-bottom:0.6rem;
+  background:var(--bg-alt);aspect-ratio:16/8;display:flex;align-items:center;justify-content:center;
+}
+.case-hero svg{width:70%;height:70%;}
+
+.case-sec{margin-bottom:3.4rem;margin-top:2.8rem;}
+.case-sec-num{font-family:var(--font-mono);font-size:0.78rem;color:var(--ink-faint);margin-bottom:0.6rem;}
+.case-sec-title{font-size:1.35rem;font-weight:700;font-family:var(--font-display);margin-bottom:1.1rem;max-width:520px;}
+.case-sec p{color:var(--ink-dim);font-size:0.97rem;max-width:560px;}
+.case-sec ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 1.2rem;}
+.case-sec ul li{font-size:0.92rem;color:var(--ink);padding-left:1.2rem;position:relative;}
+.case-sec ul li::before{content:"";position:absolute;left:0;top:0.5em;width:6px;height:6px;border-radius:50%;background:var(--violet);}
+
+.flow{display:flex;flex-direction:column;align-items:flex-start;gap:0;}
+.flow-node{
+  font-family:var(--font-mono);font-size:0.85rem;background:var(--card);border:1px solid var(--border-strong);
+  border-radius:10px;padding:0.7rem 1.2rem;box-shadow:var(--shadow-sm);
+}
+.flow-arrow{font-family:var(--font-mono);color:var(--ink-faint);padding:0.35rem 0 0.35rem 1.4rem;font-size:0.85rem;}
+.flow-branch-row{display:flex;align-items:center;gap:0;position:relative;}
+.flow-branch-off{margin-left:2.2rem;display:flex;align-items:center;gap:0.6rem;}
+.flow-branch-off .flow-arrow{padding:0;}
+.flow-branch-off .flow-node{background:var(--bg-alt);border-style:dashed;font-size:0.78rem;color:var(--ink-dim);}
+
+.deepdive{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem 2rem;}
+.dd-level{margin-bottom:0;}
+.dd-level-label{font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-faint);margin-bottom:0.4rem;display:flex;align-items:center;gap:0.5rem;}
+.dd-level-label .who{background:var(--violet-tint);color:var(--violet-deep);padding:0.15rem 0.55rem;border-radius:6px;font-family:var(--font-body);font-weight:600;font-size:0.7rem;}
+.dd-level1-text{font-size:1rem;color:var(--ink);max-width:520px;}
+.dd-expand-btn{
+  margin-top:1rem;background:transparent;border:1px solid var(--border-strong);color:var(--ink);
+  padding:0.55rem 1.1rem;border-radius:100px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:var(--font-body);
+}
+.dd-expand-btn:hover{border-color:var(--violet);color:var(--violet);}
+.dd-body{display:none;padding-top:1.4rem;border-top:1px solid var(--border);margin-top:1.4rem;}
+.dd-body.open{display:block;}
+.dd-tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.3rem;}
+.dd-tab{
+  font-family:var(--font-mono);font-size:0.76rem;padding:0.45rem 0.9rem;border-radius:8px;
+  border:1px solid var(--border);background:var(--bg-alt);color:var(--ink-dim);cursor:pointer;
+}
+[data-theme="dark"] .dd-tab{background:var(--bg);}
+.dd-tab.active{background:var(--violet);border-color:var(--violet);color:#fff;}
+.dd-tab-panel{display:none;font-size:0.9rem;color:var(--ink-dim);}
+.dd-tab-panel.active{display:block;}
+.dd-tab-panel h4{font-family:var(--font-display);font-size:0.95rem;color:var(--ink);margin-bottom:0.5rem;}
+
+.case-results{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.4rem;text-align:left;}
+.result-card .rv{font-family:var(--font-display);font-size:1.9rem;font-weight:700;color:var(--coral);display:block;}
+.result-card .rl{font-size:0.78rem;color:var(--ink-dim);margin-top:0.3rem;}
+
+.build-tl{display:flex;gap:0;overflow-x:auto;padding-bottom:0.5rem;}
+.bt-item{flex:0 0 190px;position:relative;padding:1.2rem 1rem 0 0;border-top:2px solid var(--border-strong);}
+.bt-item::before{content:"";position:absolute;top:-5px;left:0;width:10px;height:10px;border-radius:50%;background:var(--teal);}
+.bt-date{font-family:var(--font-mono);font-size:0.7rem;color:var(--teal);margin-bottom:0.3rem;}
+.bt-label{font-size:0.85rem;color:var(--ink);}
+
+.case-media-note{font-size:0.78rem;color:var(--ink-faint);margin-bottom:1.6rem;font-family:var(--font-mono);}
+
+@media(max-width:640px){
+  #hero{grid-template-columns:1fr;padding-top:7rem;}
+  .about-grid,.stack-grid{grid-template-columns:1fr;}
+  .case-sec ul{grid-template-columns:1fr;}
+  .contact-card{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark"><span class="nav-mark-dot"></span>Shahzaib Ahmad</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#stack">Toolkit</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+    <a href="#contact" class="pill-btn solid" style="padding:0.55rem 1.1rem;font-size:0.82rem;">Get in touch</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div>
+    <div class="hero-kicker">Mechatronics Engineering · Queen's University</div>
+    <h1 class="hero-name">Shahzaib<br>Ahmad</h1>
+    <p class="hero-degree">BASc, Mechatronics Engineering (2024–2028). I build <strong>where hardware meets code</strong> — from embedded neural networks to the electrical systems that move a vehicle.</p>
+    <div class="hero-fields">
+      <span class="field-chip v">Robotics</span>
+      <span class="field-chip c">Electric Vehicles</span>
+      <span class="field-chip t">Embedded Systems</span>
+      <span class="field-chip">Machine Learning</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="pill-btn solid">View projects</a>
+      <a href="#timeline" class="pill-btn ghost">View timeline</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 400 400" fill="none">
+      <circle cx="200" cy="200" r="180" fill="var(--violet-tint)"/>
+      <rect x="120" y="90" width="160" height="110" rx="14" fill="var(--card)" stroke="var(--border-strong)" stroke-width="2"/>
+      <circle cx="150" cy="120" r="6" fill="var(--coral)"/>
+      <circle cx="170" cy="120" r="6" fill="var(--teal)"/>
+      <circle cx="190" cy="120" r="6" fill="var(--gold)"/>
+      <line x1="130" y1="150" x2="270" y2="150" stroke="var(--border-strong)" stroke-width="2"/>
+      <line x1="130" y1="165" x2="240" y2="165" stroke="var(--border-strong)" stroke-width="2"/>
+      <line x1="130" y1="180" x2="255" y2="180" stroke="var(--border-strong)" stroke-width="2"/>
+      <line x1="200" y1="200" x2="200" y2="250" stroke="var(--violet)" stroke-width="3"/>
+      <circle cx="200" cy="270" r="24" fill="var(--card)" stroke="var(--violet)" stroke-width="3"/>
+      <circle cx="200" cy="270" r="6" fill="var(--violet)"/>
+      <line x1="90" y1="270" x2="176" y2="270" stroke="var(--violet)" stroke-width="3"/>
+      <line x1="224" y1="270" x2="310" y2="270" stroke="var(--violet)" stroke-width="3"/>
+      <circle cx="80" cy="270" r="14" fill="var(--coral)"/>
+      <circle cx="320" cy="270" r="14" fill="var(--teal)"/>
+    </svg>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-tag">About</div>
+    <h2 class="section-title reveal" style="margin-bottom:2.6rem;">A bit about me</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm a mechatronics engineering student at Queen's University, drawn to the point where a line of code turns into a physical motion — a motor spinning up, a wheel correcting course, a battery deciding how much current to send where.</p>
+        <p>Most of my time goes into three things: leading the electrical architecture of an electric go-kart, deploying machine learning models onto microcontrollers with almost no memory to spare, and building small autonomous robots that have to make decisions in real time.</p>
+        <p>Outside of engineering, I'm a stats enthusiast and a die-hard Leafs fan (still believing).</p>
+        <div style="display:flex;gap:0.9rem;margin-top:1.5rem;">
+          <a href="https://github.com/ShahzaibA3" target="_blank">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/shahzaib--ahmad" target="_blank">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-num">7+</span><span class="stat-lbl">Projects built</span></div>
+        <div class="stat-card"><span class="stat-num">10+</span><span class="stat-lbl">Engineers led</span></div>
+        <div class="stat-card"><span class="stat-num">3</span><span class="stat-lbl">Embedded platforms</span></div>
+        <div class="stat-card"><span class="stat-num">QU</span><span class="stat-lbl">Queen's University</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" class="alt">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Toolkit</div>
+        <h2 class="section-title reveal">What I build with</h2>
+      </div>
+      <p class="section-desc reveal">Software, hardware, and the tools I reach for to get an idea from a whiteboard to a working system.</p>
+    </div>
+    <div class="stack-grid reveal">
+      <div class="stack-card">
+        <div class="stack-card-head"><span class="stack-dot" style="background:var(--violet);"></span><span class="stack-card-title">Languages</span></div>
+        <div class="stack-pills">
+          <span class="stack-pill">Python</span><span class="stack-pill">C</span><span class="stack-pill">C++</span>
+          <span class="stack-pill">Java</span><span class="stack-pill">Verilog</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-head"><span class="stack-dot" style="background:var(--coral);"></span><span class="stack-card-title">Hardware &amp; embedded</span></div>
+        <div class="stack-pills">
+          <span class="stack-pill">ESP32</span><span class="stack-pill">Arduino</span><span class="stack-pill">ItsyBitsy M0</span>
+          <span class="stack-pill">Raspberry Pi</span><span class="stack-pill">CAD</span><span class="stack-pill">CAN Bus</span>
+          <span class="stack-pill">LiDAR</span><span class="stack-pill">IMU</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-head"><span class="stack-dot" style="background:var(--teal);"></span><span class="stack-card-title">AI &amp; data</span></div>
+        <div class="stack-pills">
+          <span class="stack-pill">TensorFlow</span><span class="stack-pill">PyTorch</span><span class="stack-pill">TFLite Micro</span>
+          <span class="stack-pill">Pandas</span><span class="stack-pill">Model Quantization</span>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-card-head"><span class="stack-dot" style="background:var(--gold);"></span><span class="stack-card-title">Tools &amp; platforms</span></div>
+        <div class="stack-pills">
+          <span class="stack-pill">Linux</span><span class="stack-pill">ROS</span><span class="stack-pill">Gazebo</span>
+          <span class="stack-pill">RViz</span><span class="stack-pill">Git / GitHub</span><span class="stack-pill">SSH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="section-inner">
+    <div class="section-tag">Timeline</div>
+    <h2 class="section-title reveal" style="margin-bottom:2.6rem;">Where I've been</h2>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Jul 2026 — Present</div>
+        <div class="tl-role">Electrical Team Lead</div>
+        <div class="tl-org">Queen's Relectric — Electric Vehicle Design Team</div>
+        <ul class="tl-bullets">
+          <li>Leading a team of 10+ students, running the meetings that set goals, manage timelines, and coordinate deliverables across workstreams.</li>
+          <li>Redesigning the go-kart's electrical architecture — a smart CAN-enabled PDU, regenerative braking control, and a custom battery system.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--coral);box-shadow:0 0 0 2px var(--coral);"></div>
+        <div class="tl-date">May 2026 — Aug 2026</div>
+        <div class="tl-role">Engineering Intern</div>
+        <div class="tl-org">Soil Engineers Ltd. · Richmond Hill, ON</div>
+        <ul class="tl-bullets">
+          <li>Collected, analyzed, and interpreted engineering data to support field investigations and technical decisions.</li>
+          <li>Built Excel tools and automated templates to organize and visualize datasets for project reporting.</li>
+          <li>Ran QA checks on technical documentation, catching inconsistencies before submission.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--teal);box-shadow:0 0 0 2px var(--teal);"></div>
+        <div class="tl-date">Sep 2025 — Present</div>
+        <div class="tl-role">Machine Learning Engineer</div>
+        <div class="tl-org">QMIND — Machine Intelligence &amp; Neuroevolution Design</div>
+        <ul class="tl-bullets">
+          <li>Working in a cross-functional team of 6 to design and prototype TinyNav, an autonomous navigation robot running ML inference under severe hardware constraints.</li>
+          <li>Presented project feasibility to 50+ stakeholders to secure support.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2024 — Present</div>
+        <div class="tl-role">Mechatronics Engineering Student</div>
+        <div class="tl-org">Queen's University · Kingston, ON</div>
+        <p style="font-size:0.88rem;color:var(--ink-dim);">BASc, Applied Science (2024–2028). Relevant coursework: Computer Architecture, Electronics, Circuits, Data Structures &amp; Algorithms, Linear Algebra.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="alt">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="section-tag">Projects</div>
+        <h2 class="section-title reveal">Things I've built</h2>
+      </div>
+      <p class="section-desc reveal">Four of these open into full case studies — click a card to go deeper.</p>
+    </div>
+    <div class="projects-grid reveal" id="projectsGrid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-card reveal">
+      <h2>Let's build something that moves.</h2>
+      <div class="contact-links">
+        <a href="mailto:shahzaib.ahmad@queensu.ca">✉ shahzaib.ahmad@queensu.ca</a>
+        <a href="https://www.linkedin.com/in/shahzaib--ahmad" target="_blank">in LinkedIn</a>
+        <a href="https://github.com/ShahzaibA3" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Designed &amp; built by <span>Shahzaib Ahmad</span> · © 2026</footer>
+
+<div id="overlay">
+  <div class="case-topbar">
+    <button class="close-btn" id="closeBtn">← Back to projects</button>
+    <div class="field-note" id="overlayCounter"></div>
+  </div>
+  <div class="case-inner" id="caseInner"></div>
+</div>
+
+<script>
+const btn = document.getElementById('themeBtn');
+const root = document.documentElement;
+const saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light');
+root.setAttribute('data-theme', saved);
+btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+btn.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  btn.textContent = next === 'dark' ? '☀️' : '🌙';
+});
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function flowHTML(steps, branch){
+  let html = '<div class="flow">';
+  steps.forEach((s, i) => {
+    if (branch && branch.afterIndex === i) {
+      html += '<div class="flow-branch-row"><div class="flow-node">' + s + '</div></div>';
+      html += '<div class="flow-branch-off"><span class="flow-arrow">&#8618;</span><div class="flow-node">' + branch.label + '</div></div>';
+    } else {
+      html += '<div class="flow-node">' + s + '</div>';
+    }
+    if (i < steps.length - 1) html += '<div class="flow-arrow">&#8595;</div>';
+  });
+  html += '</div>';
+  return html;
+}
+function miniFlowHTML(steps){
+  return '<div class="flow-mini">' + steps.map(function(s,i){
+    return '<span class="node">' + s + '</span>' + (i < steps.length - 1 ? '<span class="arrow">&#8594;</span>' : '');
+  }).join('') + '</div>';
+}
+
+const heroIllustrations = {
+  gokart: '<svg viewBox="0 0 400 200" fill="none">' +
+    '<rect x="40" y="120" width="60" height="40" rx="6" fill="var(--coral-tint)" stroke="var(--coral)" stroke-width="2"/>' +
+    '<text x="70" y="145" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--coral)">72V</text>' +
+    '<line x1="100" y1="140" x2="160" y2="140" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<rect x="160" y="115" width="60" height="50" rx="6" fill="var(--card)" stroke="var(--border-strong)" stroke-width="2"/>' +
+    '<text x="190" y="145" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">PDU</text>' +
+    '<line x1="220" y1="140" x2="280" y2="140" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<rect x="280" y="120" width="55" height="40" rx="6" fill="var(--violet-tint)" stroke="var(--violet)" stroke-width="2"/>' +
+    '<text x="307" y="145" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--violet-deep)">Motor</text>' +
+    '<line x1="190" y1="115" x2="190" y2="70" stroke="var(--ink-faint)" stroke-width="2" stroke-dasharray="4 3"/>' +
+    '<rect x="150" y="40" width="80" height="30" rx="6" fill="var(--teal-tint)" stroke="var(--teal)" stroke-width="2"/>' +
+    '<text x="190" y="59" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--teal)">Aux Loads</text>' +
+    '</svg>',
+  rover: '<svg viewBox="0 0 400 200" fill="none">' +
+    '<circle cx="90" cy="150" r="18" fill="var(--card)" stroke="var(--border-strong)" stroke-width="3"/>' +
+    '<circle cx="310" cy="150" r="18" fill="var(--card)" stroke="var(--border-strong)" stroke-width="3"/>' +
+    '<rect x="90" y="90" width="220" height="55" rx="10" fill="var(--card)" stroke="var(--border-strong)" stroke-width="2"/>' +
+    '<rect x="170" y="50" width="14" height="45" fill="var(--ink-faint)"/>' +
+    '<rect x="150" y="35" width="55" height="18" rx="4" fill="var(--violet-tint)" stroke="var(--violet)" stroke-width="2"/>' +
+    '<circle cx="130" cy="80" r="8" fill="var(--coral)"/>' +
+    '<circle cx="270" cy="80" r="8" fill="var(--teal)"/>' +
+    '<text x="200" y="122" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="var(--ink)">5-DOF Arm + Sensors</text>' +
+    '</svg>',
+  tinynav: '<svg viewBox="0 0 400 200" fill="none">' +
+    '<rect x="30" y="80" width="60" height="40" rx="6" fill="var(--coral-tint)" stroke="var(--coral)" stroke-width="2"/>' +
+    '<text x="60" y="104" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--coral)">Camera</text>' +
+    '<line x1="90" y1="100" x2="140" y2="100" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<rect x="140" y="80" width="70" height="40" rx="6" fill="var(--violet-tint)" stroke="var(--violet)" stroke-width="2"/>' +
+    '<text x="175" y="104" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--violet-deep)">Neural Net</text>' +
+    '<line x1="210" y1="100" x2="260" y2="100" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<rect x="260" y="80" width="55" height="40" rx="6" fill="var(--card)" stroke="var(--border-strong)" stroke-width="2"/>' +
+    '<text x="287" y="104" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">ESP32</text>' +
+    '<line x1="315" y1="100" x2="345" y2="100" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<circle cx="365" cy="100" r="16" fill="var(--teal-tint)" stroke="var(--teal)" stroke-width="2"/>' +
+    '<text x="365" y="103" text-anchor="middle" font-family="IBM Plex Mono" font-size="8" fill="var(--teal)">M</text>' +
+    '</svg>',
+  linefollower: '<svg viewBox="0 0 400 200" fill="none">' +
+    '<rect x="40" y="90" width="70" height="35" rx="6" fill="var(--coral-tint)" stroke="var(--coral)" stroke-width="2"/>' +
+    '<text x="75" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--coral)">IR Array</text>' +
+    '<line x1="110" y1="107" x2="150" y2="107" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<rect x="150" y="90" width="70" height="35" rx="6" fill="var(--violet-tint)" stroke="var(--violet)" stroke-width="2"/>' +
+    '<text x="185" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--violet-deep)">PID Loop</text>' +
+    '<line x1="220" y1="107" x2="260" y2="107" stroke="var(--ink-faint)" stroke-width="2"/>' +
+    '<rect x="260" y="90" width="80" height="35" rx="6" fill="var(--card)" stroke="var(--border-strong)" stroke-width="2"/>' +
+    '<text x="300" y="112" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="var(--ink)">ItsyBitsy M0</text>' +
+    '</svg>'
+};
+
+const projects = [
+  {
+    id:'gokart', clickable:true, num:'01',
+    title:'Electric Go-Kart — Relectric', org:"Queen's Relectric", year:'2025 — Present',
+    cardDesc:"Leading the electrical architecture of an electric go-kart: a CAN-enabled PDU, regenerative braking control, and a custom battery system.",
+    cardFlow:['Battery','PDU','Inverter','Motor'],
+    chips:['CAN Bus','PDU Design','Regen Braking','Battery Systems'],
+    problem:"The kart's stock wiring had no central protection, no shared communication bus, and no way to recover energy under braking. The brief: design an architecture that's safe to work on, easy to diagnose, and gets range back.",
+    system:{steps:['72V Battery Pack','Smart PDU','Motor Inverter','Drive Motor'], branch:{afterIndex:1,label:'Auxiliary Loads'}},
+    contribution:['CAN-enabled PDU design','Regenerative braking control logic','Custom battery pack &amp; BMS integration','Wiring harness &amp; protection systems','Leading a team of 10+ engineers'],
+    challengeTitle:'Regen braking meant current could flow backward.',
+    challengeText:"Once the inverter could push current back into the pack under braking, a fault anywhere downstream stopped being just an inconvenience — it became a fire risk. Every relay, fuse, and isolation point in the PDU had to account for current flowing in both directions, not just out from the battery.",
+    level1:'Redesigned the electrical architecture of an electric go-kart, including a CAN-enabled PDU, regenerative braking control, and a custom battery system.',
+    tabs:[
+      {label:'Battery', title:'Battery pack', body:"Custom 72V pack built from series/parallel cell groups, sized for the kart's target range and peak current draw. Integrated with a battery management system to track cell voltages, temperature, and state of charge, and to disconnect the pack if any cell drifts out of a safe range."},
+      {label:'CAN', title:'CAN bus', body:"A CAN bus ties the PDU, motor controller, and dash together on a shared network instead of a rat's nest of point-to-point wiring. Each node broadcasts state (current draw, fault flags, battery status) so any part of the system can react to what the others are doing."},
+      {label:'PDU', title:'Power distribution unit', body:"A smart PDU replaces the stock fuse box with software-controlled relays and current sensing per channel. It can shut down a single faulted circuit instead of the whole vehicle, and logs fault data over CAN for diagnosis after the fact."},
+      {label:'Regen', title:'Regenerative braking', body:"On braking, the motor controller runs the motor as a generator and the inverter routes that current back to the pack. Control logic manages how much regen current is allowed based on pack state of charge and temperature, so the pack is never over-charged."},
+      {label:'Safety', title:'Safety systems', body:"Isolation monitoring watches for any leakage between the high-voltage system and chassis ground. A hardware e-stop and interlock loop can drop the main contactor independently of software, and every protection path is designed to fail to the safe (open) state."}
+    ],
+    results:[{v:'10+',l:'Engineers led'},{v:'3',l:'Subsystems: PDU, BMS, regen'},{v:'2025–26',l:'Active build cycle'}],
+    learned:"Electrical systems on a vehicle don't fail in isolation — a decision in the battery pack shows up as a constraint in the PDU, which shows up as a constraint in how aggressive the regen braking can be. Leading the team taught me as much about sequencing decisions and communicating trade-offs as it did about circuit design.",
+    buildTimeline:[{d:'Aug 2025',l:'Architecture design'},{d:'Nov 2025',l:'PDU prototype'},{d:'Jan 2026',l:'Battery pack assembly'},{d:'Mar 2026',l:'Regen bench test'},{d:'Ongoing',l:'Full vehicle integration'}]
+  },
+  {
+    id:'rover', clickable:true, num:'02',
+    title:'Mars Rover — Watney', org:'Personal / Team Project', year:'2025',
+    cardDesc:'A Mars sample-retrieval rover with a 5-DOF robotic arm, LiDAR, IMU, and wheel encoders, validated in simulation before deployment.',
+    cardFlow:['Sensors','ROS Stack','Pi + Arduino','Arm + Wheels'],
+    chips:['ROS','Raspberry Pi','Arduino','LiDAR','Gazebo'],
+    problem:'Retrieving a sample from unpredictable terrain means a rover has to sense its surroundings, plan a path, and manipulate an object — all on embedded hardware that has to fit inside a chassis and run in real time.',
+    system:{steps:['Camera + LiDAR + IMU + Encoders','Sensor Fusion (ROS)','Path Planning','Raspberry Pi + Arduino','Wheels + 5-DOF Arm']},
+    contribution:['5-DOF robotic arm mechanical design','Sensor integration: LiDAR, IMU, wheel encoders','ROS navigation stack, validated in Gazebo/RViz','Embedded motor control firmware (Arduino)','Raspberry Pi + embedded Linux system integration'],
+    challengeTitle:'Two demanding jobs, one small computer.',
+    challengeText:"The arm's inverse kinematics and the navigation stack both wanted the same limited CPU cycles on the onboard compute. Splitting work between the Raspberry Pi (planning, perception) and Arduino (low-level motor control) meant designing a communication protocol reliable enough that neither system stalled waiting on the other.",
+    level1:'Designed a Mars sample-retrieval rover with a 5-DOF robotic arm and a full autonomy stack, validated in simulation before deployment to real hardware.',
+    tabs:[
+      {label:'Arm', title:'5-DOF robotic arm', body:'Designed and modeled a 5 degree-of-freedom arm for sample pickup, including inverse kinematics for reaching a target pose and a gripper mechanism sized for the sample geometry.'},
+      {label:'Perception', title:'Sensor fusion', body:"Combined LiDAR point clouds, IMU orientation data, and wheel encoder odometry to build a picture of the rover's position and surroundings, feeding it into the ROS navigation stack."},
+      {label:'Navigation', title:'ROS navigation stack', body:"Path planning and obstacle avoidance run on ROS, first validated entirely in Gazebo simulation with RViz for visualization before any code touched the physical rover."},
+      {label:'Compute', title:'Raspberry Pi + Arduino split', body:'The Raspberry Pi runs Linux, ROS, and planning; the Arduino handles tight-loop motor control. A lightweight serial protocol between them keeps motor commands responsive even when the Pi is busy with perception.'}
+    ],
+    results:[{v:'5',l:'Degrees of freedom (arm)'},{v:'3',l:'Sensor modalities fused'},{v:'Sim &#8594; HW',l:'Validated in Gazebo first'}],
+    learned:"Simulation is only useful if you're honest about where it diverges from reality — friction, sensor noise, and timing jitter all showed up on hardware in ways Gazebo didn't fully capture. It changed how I think about the gap between \"it works in sim\" and \"it works.\"",
+    buildTimeline:[{d:'Concept',l:'Arm CAD &amp; kinematics'},{d:'Bring-up',l:'Sensor integration'},{d:'Sim',l:'ROS nav stack in Gazebo'},{d:'Integration',l:'Hardware assembly'},{d:'Field test',l:'Full system validation'}]
+  },
+  {
+    id:'tinynav', clickable:true, num:'03',
+    title:'TinyNav', org:'QMIND', year:'2025 — 2026',
+    cardDesc:'TinyML autonomous navigation on an ESP32 — running a live neural network on a microcontroller with almost no memory to spare.',
+    cardFlow:['Camera','Neural Net','ESP32','Motors'],
+    chips:['C++','ESP32','TFLite Micro','Embedded AI','CAD'],
+    problem:'How do you run a neural network on hardware with extremely limited memory? A typical ESP32 has kilobytes of RAM, not the gigabytes most models are designed for.',
+    system:{steps:['Camera','Data Processing','Neural Network','ESP32','Motor Control']},
+    contribution:['Model quantization','Model integration (TFLite Micro)','Embedded deployment','CAD for the chassis','Electrical integration'],
+    challengeTitle:'Memory was the primary constraint.',
+    challengeText:"The ESP32's RAM and flash are small enough that a standard convolutional model simply doesn't fit. Getting a working model on-device meant aggressive int8 quantization, trimming the architecture down to only the layers the task needed, and profiling every intermediate buffer to squeeze the model into the space available — without losing the accuracy needed to stay on the track.",
+    level1:'Built a TinyML pipeline that runs a live neural network on an ESP32 microcontroller for autonomous track navigation.',
+    tabs:[
+      {label:'Quantization', title:'Quantization', body:'Converted the trained model to int8 precision using post-training quantization, calibrated against a representative dataset so accuracy loss stayed within an acceptable range for a low-power microcontroller.'},
+      {label:'Model', title:'Model integration', body:'Trimmed the network architecture to the minimum depth needed for the task and converted it to TensorFlow Lite for Microcontrollers, which runs directly on the ESP32 with no operating system underneath it.'},
+      {label:'Firmware', title:'Embedded deployment', body:"Wrote the C++ inference loop that pulls a frame from the camera, runs it through the model, and converts the output into motor commands — all inside the ESP32's tight timing budget."},
+      {label:'Hardware', title:'CAD &amp; electrical integration', body:'Designed the chassis in CAD to mount the camera, ESP32, and motor driver, and wired the electrical system connecting the camera module, microcontroller, and motors.'}
+    ],
+    results:[{v:'99.9978%',l:'RAM reduction'},{v:'99.9938%',l:'Flash reduction'},{v:'20 FPS',l:'Target inference rate'}],
+    learned:"Quantization isn't free — every percentage point of memory saved is a trade against accuracy, and the only way to find the right point on that curve is to measure it, not guess. I also learned to respect how much real-world lighting variation can throw off a model that looked solid in testing.",
+    buildTimeline:[{d:'Sep 2025',l:'Dataset collection'},{d:'Oct 2025',l:'Model architecture design'},{d:'Dec 2025',l:'Quantization &amp; optimization'},{d:'Feb 2026',l:'ESP32 firmware integration'},{d:'Mar 2026',l:'Track testing'}]
+  },
+  {
+    id:'linefollower', clickable:true, num:'04',
+    title:'Line Following Robot', org:'Coursework', year:'2025',
+    cardDesc:'A mobile robot on an ItsyBitsy M0 that follows a track and picks up / drops off payloads, comparing open-loop and closed-loop control.',
+    cardFlow:['IR Sensors','PID Loop','ItsyBitsy M0','Motors'],
+    chips:['C','Arduino','ItsyBitsy M0','Closed Loop'],
+    problem:'How do you get a small robot to follow a line and complete pick-and-drop tasks reliably, using nothing but a low-power microcontroller and an array of IR sensors?',
+    system:{steps:['IR Sensor Array','Control Algorithm (PID)','ItsyBitsy M0','Motor Drivers','Wheels + Gripper']},
+    contribution:['Control algorithm design (open vs. closed loop)','Firmware in C for the ItsyBitsy M0','Mechanical gripper / payload mechanism','Sensor calibration and tuning'],
+    challengeTitle:"Open loop worked, until it didn't.",
+    challengeText:'Open-loop control followed the line fine under ideal conditions, but drifted as soon as the track had real-world variance — slightly worn tape, uneven lighting, small mechanical asymmetries. Moving to closed-loop PID control fixed the drift, but tuning it took care: too aggressive and the robot overshot every turn, too soft and it lagged behind the line.',
+    level1:'Programmed a mobile robot to follow a track and complete pick-and-drop tasks, comparing open-loop and closed-loop control strategies.',
+    tabs:[
+      {label:'Sensors', title:'IR sensor array', body:'An array of IR reflectance sensors reads the line position underneath the robot. Calibration against the actual track surface was necessary to set reliable on/off thresholds for the tape versus background.'},
+      {label:'Control', title:'Open loop vs. closed loop', body:'Built and benchmarked both an open-loop controller (fixed motor commands based on sensor state) and a closed-loop PID controller (continuous correction based on error from center). Closed loop won on stability but needed careful gain tuning.'},
+      {label:'Mechanical', title:'Chassis &amp; gripper', body:'Designed the chassis and a simple servo-actuated gripper mechanism so the robot could pick up a payload at one point on the track and release it at another.'},
+      {label:'Firmware', title:'ItsyBitsy M0 firmware', body:'Wrote the control loop in C for the ItsyBitsy M0, structured so the sensor read, PID calculation, and motor output could each be tuned independently during testing.'}
+    ],
+    results:[{v:'2',l:'Control strategies benchmarked'},{v:'PID',l:'Closed-loop tracking'},{v:'&#10003;',l:'Reliable pick-and-drop'}],
+    learned:"This project made control theory tangible — the difference between an open-loop and closed-loop controller isn't abstract when you can watch one drift off the line and the other correct itself in real time. It also taught me how much of \"good control\" comes down to careful sensor calibration before any code runs.",
+    buildTimeline:[{d:'Week 1',l:'Chassis build'},{d:'Week 2',l:'IR sensor calibration'},{d:'Week 3',l:'Open-loop implementation'},{d:'Week 4',l:'Closed-loop PID tuning'},{d:'Week 5',l:'Payload mechanism + demo'}]
+  },
+  {
+    id:'traffic', clickable:false, num:'05',
+    title:'Traffic Data Management System', org:'Coursework', year:'2025',
+    cardDesc:'A data-structures-based traffic optimization simulator using graphs, finite-state machines, and priority queues to model real intersections.',
+    cardFlow:['Intersection Data','Graph Model','FSM + Queues'],
+    chips:['Python','Graphs','FSM','Priority Queues']
+  },
+  {
+    id:'bentonite', clickable:false, num:'06',
+    title:'Bentonite Servo Dispenser', org:'Coursework', year:'2024',
+    cardDesc:'A precision rotary-disk dispensing mechanism controlled by a micro servo, targeting ±0.05g accuracy on an ~0.8g output per cycle.',
+    cardFlow:['Servo','Rotary Disk','±0.05g Output'],
+    chips:['Servo Control','Mechanism Design']
+  },
+  {
+    id:'portfolio', clickable:false, num:'07',
+    title:'This Portfolio', org:'Personal', year:'2026',
+    cardDesc:'Designed and built this site from scratch as a case-study-driven portfolio, with layered technical detail on each flagship project.',
+    cardFlow:['Content','Layout','Interaction'],
+    chips:['HTML','CSS','JavaScript']
+  }
+];
+
+const grid = document.getElementById('projectsGrid');
+projects.forEach(function(p){
+  const card = document.createElement('div');
+  card.className = 'pcard' + (p.clickable ? ' clickable' : '');
+  card.innerHTML =
+    '<div class="pcard-top"><div><div class="pcard-title">' + p.title + '</div>' +
+    '<div class="pcard-org">' + p.org + ' · ' + p.year + '</div></div>' +
+    (p.clickable ? '<span class="pcard-open">Open case study &#8594;</span>' : '') + '</div>' +
+    '<p class="pcard-desc">' + p.cardDesc + '</p>' +
+    '<div class="pcard-diagram">' + miniFlowHTML(p.cardFlow) + '</div>' +
+    '<div class="pcard-chips">' + p.chips.map(function(c){ return '<span class="pchip">' + c + '</span>'; }).join('') + '</div>';
+  if (p.clickable) card.addEventListener('click', function(){ openCase(p.id); });
+  grid.appendChild(card);
+});
+
+const overlay = document.getElementById('overlay');
+const caseInner = document.getElementById('caseInner');
+
+function openCase(id){
+  const p = projects.find(function(x){ return x.id === id; });
+  if (!p) return;
+
+  let html = '';
+  html += '<div class="case-eyebrow">' + p.org + ' · ' + p.year + '</div>';
+  html += '<h1 class="case-title">' + p.title + '</h1>';
+  html += '<p class="case-sub">' + p.cardDesc + '</p>';
+  html += '<div class="case-hero">' + (heroIllustrations[p.id] || '') + '</div>';
+  html += '<div class="case-media-note">// Swap this illustration for a real project photo or video here</div>';
+
+  html += '<div class="case-sec"><div class="case-sec-num">01 / The problem</div><h3 class="case-sec-title">' + p.problem + '</h3></div>';
+
+  html += '<div class="case-sec"><div class="case-sec-num">02 / System</div><h3 class="case-sec-title">How it fits together</h3>' + flowHTML(p.system.steps, p.system.branch) + '</div>';
+
+  html += '<div class="case-sec"><div class="case-sec-num">03 / My contribution</div><h3 class="case-sec-title">What I owned</h3><ul>' + p.contribution.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul></div>';
+
+  html += '<div class="case-sec"><div class="case-sec-num">04 / Engineering deep dive</div><h3 class="case-sec-title">' + p.challengeTitle + '</h3><p style="margin-bottom:1.4rem;">' + p.challengeText + '</p>';
+  html += '<div class="deepdive">';
+  html += '<div class="dd-level"><div class="dd-level-label"><span class="who">Level 1 · Recruiter</span></div>';
+  html += '<p class="dd-level1-text">' + p.level1 + '</p>';
+  html += '<button class="dd-expand-btn" id="ddExpand1">Show the system</button></div>';
+  html += '<div class="dd-body" id="ddBody1">';
+  html += '<div class="dd-level-label" style="margin-bottom:0.8rem;"><span class="who">Level 2 · Engineer</span></div>';
+  html += flowHTML(p.system.steps, p.system.branch);
+  html += '<button class="dd-expand-btn" id="ddExpand2" style="margin-top:1.4rem;">Explore technical details</button>';
+  html += '<div class="dd-body" id="ddBody2">';
+  html += '<div class="dd-level-label" style="margin-bottom:0.8rem;"><span class="who">Level 3 · Technical details</span></div>';
+  html += '<div class="dd-tabs">' + p.tabs.map(function(t,i){ return '<button class="dd-tab' + (i===0?' active':'') + '" data-tab="' + i + '">' + t.label + '</button>'; }).join('') + '</div>';
+  html += p.tabs.map(function(t,i){ return '<div class="dd-tab-panel' + (i===0?' active':'') + '" data-panel="' + i + '"><h4>' + t.title + '</h4><p>' + t.body + '</p></div>'; }).join('');
+  html += '</div></div></div></div>';
+
+  html += '<div class="case-sec"><div class="case-sec-num">05 / Result</div><h3 class="case-sec-title">Where it landed</h3><div class="case-results">' + p.results.map(function(r){ return '<div class="result-card"><span class="rv">' + r.v + '</span><span class="rl">' + r.l + '</span></div>'; }).join('') + '</div></div>';
+
+  html += '<div class="case-sec"><div class="case-sec-num">06 / What I learned</div><p>' + p.learned + '</p></div>';
+
+  html += '<div class="case-sec" style="margin-bottom:0;"><div class="case-sec-num">Build timeline</div><div class="build-tl">' + p.buildTimeline.map(function(b){ return '<div class="bt-item"><div class="bt-date">' + b.d + '</div><div class="bt-label">' + b.l + '</div></div>'; }).join('') + '</div></div>';
+
+  caseInner.innerHTML = html;
+
+  document.getElementById('ddExpand1').addEventListener('click', function(e){
+    document.getElementById('ddBody1').classList.add('open');
+    e.target.style.display = 'none';
+  });
+  document.getElementById('ddExpand2').addEventListener('click', function(e){
+    document.getElementById('ddBody2').classList.add('open');
+    e.target.style.display = 'none';
+  });
+  caseInner.querySelectorAll('.dd-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      const i = tab.dataset.tab;
+      caseInner.querySelectorAll('.dd-tab').forEach(function(t){ t.classList.remove('active'); });
+      caseInner.querySelectorAll('.dd-tab-panel').forEach(function(pn){ pn.classList.remove('active'); });
+      tab.classList.add('active');
+      caseInner.querySelector('.dd-tab-panel[data-panel="' + i + '"]').classList.add('active');
+    });
+  });
+
+  document.getElementById('overlayCounter').textContent = p.num + ' / 04';
+  overlay.classList.add('open');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('closeBtn').addEventListener('click', function(){
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+});
+</script>
+</body>
+</html>
